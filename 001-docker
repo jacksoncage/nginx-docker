@@ -1,0 +1,25 @@
+upstream backend  {
+      server ${NGINX_BACKEND_IP}:${NGINX_BACKEND_PORT} weight=10 max_fails=3 fail_timeout=30s;
+}
+
+server { 
+    server_name ${NGINX_SERVER_NAME}
+
+    access_log  ${NGINX_LOG_DIR}/access.log;
+    error_log   ${NGINX_LOG_DIR}/error.log;
+
+    location ~ /\.ht {
+        deny all;
+    }
+    location ~ /\.git {
+      deny all;
+    }
+
+    location / {
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_redirect off;
+            proxy_set_header Host $http_host;
+            proxy_pass http://backend;
+    }
+}

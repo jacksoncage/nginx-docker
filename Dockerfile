@@ -23,9 +23,6 @@ ENV NGINX_BACKEND_IP 172.17.42.1
 ENV NGINX_BACKEND_PORT 80
 ENV NGINX_SERVER_NAME localhost
 
-RUN service nginx restart
- 
-# Expose port 80
 EXPOSE 80
 
 ADD start /start

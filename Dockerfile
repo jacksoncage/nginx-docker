@@ -25,6 +25,6 @@ ENV NGINX_SERVER_NAME localhost
 
 EXPOSE 80
 
-ADD start /start
-RUN chmod 0755 /start
-CMD ["/start"]
+ADD start.sh /start.sh
+RUN chmod 0755 /start.sh
+CMD ["/start.sh"]

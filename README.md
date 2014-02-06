@@ -10,6 +10,7 @@ Nginx will make of the following environment variables.
 	NGINX_BACKEND_IP=172.17.42.1
 	NGINX_BACKEND_PORT=80
 	NGINX_SERVER_NAME=localhost
+	NGINX_SERVER_NAME_2=docker.localhost
 
 ### Use the pre built image
 The pre built image can be downloaded using docker directly. After that you do not need to use this command again, you will have the image on your machine.

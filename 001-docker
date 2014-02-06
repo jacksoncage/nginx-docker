@@ -3,7 +3,7 @@ upstream backend  {
 }
 
 server { 
-    server_name ${NGINX_SERVER_NAME}
+    server_name ${NGINX_SERVER_NAME} ${NGINX_SERVER_NAME_2}
 
     access_log  ${NGINX_LOG_DIR}/access.log;
     error_log   ${NGINX_LOG_DIR}/error.log;

@@ -1,6 +1,8 @@
 Automated build of nginx with Docker
 ===========
 
+ > Based on (Debian official repository)[https://index.docker.io/_/debian/]
+
 ### Nginx environment variables
 Nginx will make of the following environment variables.
 

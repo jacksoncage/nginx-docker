@@ -1,18 +1,12 @@
-FROM        ubuntu
+FROM        ubuntu:14.04.1
 MAINTAINER  Love Nyberg "love.nyberg@lovemusic.se"
- 
-# Update apt sources
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
+ENV REFRESHED_AT 2014-10-22
 
-# Update the package repository
-RUN apt-get update; apt-get upgrade -y; apt-get install locales
-
-# Configure timezone and locale
-RUN echo "Europe/Stockholm" > /etc/timezone; dpkg-reconfigure -f noninteractive tzdata
-RUN export LANGUAGE=en_US.UTF-8; export LANG=en_US.UTF-8; export LC_ALL=en_US.UTF-8; locale-gen en_US.UTF-8; DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
-
-# Install base system
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget curl nginx
+# Install applications
+RUN apt-get update -qq && \
+  apt-get upgrade -yqq && \
+  apt-get -yqq install wget curl nginx && \
+  apt-get -yqq clean
 
 ADD 001-docker /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/001-docker /etc/nginx/sites-enabled/001-docker
@@ -26,5 +20,4 @@ ENV NGINX_SERVER_NAME localhost
 EXPOSE 80
 
 ADD start.sh /start.sh
-RUN chmod 0755 /start.sh
 CMD ["/start.sh"]

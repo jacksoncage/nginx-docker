@@ -28,13 +28,13 @@ If you prefer you can easily build the docker image by yourself. After this the 
 ### Start the container
 The container has all pre requisites set up to run any nginx application. Specify all needed environment variables.
 
-	$ sudo docker run -i -d -p 80 -e NGINX_SERVER_NAME=jacksonacge.se jacksoncage/nginx
+	$ sudo docker run -i -d -p 80 -e NGINX_SERVER_NAME=jacksoncage.se jacksoncage/nginx
 
 
 #### Start the container and keep control
 The command above starts the container in deamon mode (-d) and runs in the background. If you want to start it by yourself just to see what happens use this command:
 
-	$ sudo docker run -i -t -p 80 -e NGINX_SERVER_NAME=jacksonacge.se jacksoncage/nginx bash
+	$ sudo docker run -i -t -p 80 -e NGINX_SERVER_NAME=jacksoncage.se jacksoncage/nginx bash
 
 Notice the two changes made here, first we replaced the deamon switch (-d) with the tty switch (-t) which pipes the std in and std out to your terminal.
 
